@@ -1,5 +1,14 @@
+import { Header } from '../../components';
+
 function Home() {
-    return<div>Home</div>;
+    return (
+        <div className=" overflow-y-auto">
+            Home
+            <div className="h-[70px] px-[59px] flex items-center">
+                <Header />
+            </div>
+        </div>
+    );
 }
 
 export default Home;

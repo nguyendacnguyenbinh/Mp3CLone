@@ -1,24 +1,24 @@
-import icons from './icon';
-const { MdOutlineLibraryMusic } = icons;
+import { UserGroupIcon, LibraryIcon, ZingChart, ExploreIcon } from '../assets/index';
+
 export const sidebarMenu = [
     {
         path: 'mymusic',
         text: 'Cá nhân',
-        icon: <MdOutlineLibraryMusic size={24} />,
+        icon: <UserGroupIcon />,
     },
     {
         path: '',
         text: 'Khám phá',
-        icon: <MdOutlineLibraryMusic size={24} />,
+        icon: <ExploreIcon />,
     },
     {
         path: 'zing-chart',
         text: '#zingchart',
-        icon: <MdOutlineLibraryMusic size={24} />,
+        icon: <ZingChart />,
     },
     {
-        path: 'follow',
-        text: 'Theo dõi',
-        icon: <MdOutlineLibraryMusic size={24} />,
+        path: 'library',
+        text: 'Thư viện',
+        icon: <LibraryIcon />,
     },
 ];
