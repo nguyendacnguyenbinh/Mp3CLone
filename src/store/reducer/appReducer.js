@@ -3,8 +3,7 @@
 import actionType from '../action/actionType';
 
 const initState = {
-    homeData: [],
-    text: 'hello world',
+    banner: [],
 };
 
 const appReducer = (state = initState, action) => {

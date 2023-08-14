@@ -9,7 +9,6 @@ function Public() {
                 <SidebarLeft />
             </div>
             <div className="flex-auto">
-                Public
                 <Outlet />
             </div>
             <div className="w-[329px] flex-none border border-green-500">
