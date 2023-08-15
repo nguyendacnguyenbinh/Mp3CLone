@@ -1,5 +1,5 @@
 const actionType = {
-    GET_BANNERs: 'GET_BANNERs',
+    GET_HOME: 'GET_HOME',
 };
 
 export default actionType;
