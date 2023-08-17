@@ -7,10 +7,10 @@ export const getArrSlider = (start, end, number) => {
     }
 
     if (start > end) {
-        for (let i = start; i < number; i++) {
+        for (let i = 0; i <= end; i++) {
             arr.push(i);
         }
-        for (let i = 0; i <= 3 - arr.length; i++) {
+        for (let i = start; i < number; i++) {
             arr.push(i);
         }
     }

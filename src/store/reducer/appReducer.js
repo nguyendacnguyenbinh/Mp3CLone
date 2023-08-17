@@ -4,6 +4,7 @@ import actionType from '../action/actionType';
 
 const initState = {
     banner: [],
+    playlist: [],
 };
 
 const appReducer = (state = initState, action) => {
@@ -14,6 +15,10 @@ const appReducer = (state = initState, action) => {
                 banner:
                     action.homeData?.find(
                         (item) => item.sectionType === 'banner',
+                    ).items || null,
+                playlist:
+                    action.homeData?.find(
+                        (item) => item.sectionType === 'playlist',
                     ).items || null,
             };
 
