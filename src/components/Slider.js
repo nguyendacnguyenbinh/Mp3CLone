@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getArrSlider } from '../ulti/fn';
+import * as action from '../store/action';
 
 const Slider = () => {
     const { banner } = useSelector((state) => state.app);
     const { playlist } = useSelector((state) => state.app);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const sliderEls = document.getElementsByClassName('slider-item');
@@ -66,20 +68,27 @@ const Slider = () => {
 
             min = min === sliderEls.length - 1 ? 0 : min + 1;
             max = max === sliderEls.length - 1 ? 0 : max + 1;
-        }, 2000);
+        }, 4000);
 
         return () => {
             invalid && clearInterval(invalid);
         };
     }, []);
+
+    const handleClickBanner = (item) => {
+        if (item.type === 1) {
+            dispatch(action.setCurSongId(item.encodeId));
+        }
+    };
     return (
         <div className="flex gap-8 w-full overflow-hidden px-[59px] pt-8 ">
-            {playlist?.map((item, index) => (
+            {banner?.map((item, index) => (
                 <img
                     key={item.encodeId}
                     alt=""
-                    src={item.thumbnail}
-                    className={`slider-item flex-1 object-contain w-[30%] rounded-lg ${
+                    src={item.banner}
+                    onClick={() => handleClickBanner(item)}
+                    className={`slider-item flex-1 object-cover w-[30%] h-[210px] rounded-lg ${
                         index <= 2 ? 'block' : 'hidden'
                     }`}
                 />

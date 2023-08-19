@@ -3,6 +3,19 @@ module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     theme: {
         extend: {
+            backgroundColor: {
+                'main-600': '#130c1c',
+                'main-500': '#170f23',
+                'main-400': '#221a2d',
+                'main-300': '#393142',
+            },
+            colors: {
+                'main-600': '#130c1c',
+                'main-500': '#170f23',
+                'main-400': '#221a2d',
+                'main-300': '#393142',
+            },
+
             keyframes: {
                 'slide-left': {
                     '0%': {
