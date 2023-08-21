@@ -1,9 +1,13 @@
-import { GoArrowLeft, GoArrowRight, GoSearch } from 'react-icons/go';
+import { GoArrowLeft, GoArrowRight, GoSearch, GoHeart, GoHeartFill } from 'react-icons/go';
+import { BiDotsHorizontalRounded } from 'react-icons/bi';
 
 export const icons = {
     GoArrowLeft,
     GoArrowRight,
     GoSearch,
+    GoHeart,
+    GoHeartFill,
+    BiDotsHorizontalRounded,
 };
 
 export const UserGroupIcon = ({ width = '24px', height = '24px', className }) => (
@@ -33,7 +37,13 @@ export const UserGroupIcon = ({ width = '24px', height = '24px', className }) =>
     </svg>
 );
 export const ExploreIcon = ({ width = '24px', height = '24px', className }) => (
-    <svg className={className} width={width} height={height} viewBox="0 0 24 24" fill="currentColor">
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+    >
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -43,7 +53,13 @@ export const ExploreIcon = ({ width = '24px', height = '24px', className }) => (
     </svg>
 );
 export const ZingChart = ({ width = '24px', height = '24px', className }) => (
-    <svg className={className} width={width} height={height} viewBox="0 0 24 24" fill="currentColor">
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+    >
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -54,7 +70,13 @@ export const ZingChart = ({ width = '24px', height = '24px', className }) => (
     </svg>
 );
 export const LibraryIcon = ({ width = '24px', height = '24px', className }) => (
-    <svg className={className} width={width} height={height} viewBox="0 0 24 24" fill="currentColor">
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+    >
         <path
             fillRule="evenodd"
             clipRule="evenodd"
