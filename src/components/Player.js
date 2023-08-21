@@ -3,7 +3,17 @@ import { useSelector } from 'react-redux';
 import * as apis from '../apis';
 import { icons } from '../assets/Icon';
 
-const { GoHeartFill, GoHeart, BiDotsHorizontalRounded } = icons;
+const {
+    GoHeartFill,
+    GoHeart,
+    BiDotsHorizontalRounded,
+    BiSkipNext,
+    BiSkipPrevious,
+    BiPlayCircle,
+    BiPauseCircle,
+    RxShuffle,
+    FiRepeat,
+} = icons;
 const Player = () => {
     const { currentSong } = useSelector((state) => state.music);
     const [songInfo, setSongInfo] = useState(null);
@@ -39,7 +49,26 @@ const Player = () => {
                     </span>
                 </div>
             </div>
-            <div className="w-[40%]">player</div>
+            <div className="w-[40%] border border-red-500 flex flex-col justify-center items-center text-white">
+                <div className=" flex">
+                    <span>
+                        <RxShuffle size={16} />
+                    </span>
+                    <span>
+                        <BiSkipPrevious size={16} />
+                    </span>
+                    <span>
+                        <BiPlayCircle size={16} />
+                    </span>
+                    <span>
+                        <BiSkipNext size={16} />
+                    </span>
+                    <span>
+                        <FiRepeat size={16} />
+                    </span>
+                </div>
+                <div>Process bar</div>
+            </div>
             <div className="w-[30%]">volume</div>
         </div>
     );
