@@ -1,6 +1,7 @@
 import { GoArrowLeft, GoArrowRight, GoSearch, GoHeart, GoHeartFill, GoPlay } from 'react-icons/go';
 import { BiDotsHorizontalRounded, BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { RxShuffle } from 'react-icons/rx';
+import { BsDot } from 'react-icons/bs';
 import { FiRepeat, FiPauseCircle, FiMusic } from 'react-icons/fi';
 
 export const icons = {
@@ -17,6 +18,7 @@ export const icons = {
     FiRepeat,
     FiPauseCircle,
     FiMusic,
+    BsDot,
 };
 
 export const UserGroupIcon = ({ width = '24px', height = '24px', className }) => (
