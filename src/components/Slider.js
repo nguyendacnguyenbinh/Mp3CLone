@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getArrSlider } from '../ulti/fn';
 import * as action from '../store/action';
+import { useNavigate } from 'react-router-dom';
 
 const Slider = () => {
     const { banner } = useSelector((state) => state.app);
-    const { playlist } = useSelector((state) => state.app);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const sliderEls = document.getElementsByClassName('slider-item');
@@ -18,21 +19,9 @@ const Slider = () => {
 
             // Delete animation
             for (let i = 0; i < sliderEls.length; i++) {
-                sliderEls[i].classList.remove(
-                    'animate-slide-right',
-                    'order-last',
-                    'z-20',
-                );
-                sliderEls[i].classList.remove(
-                    'animate-slide-left',
-                    'order-first',
-                    'z-10',
-                );
-                sliderEls[i].classList.remove(
-                    'animate-slide-left2',
-                    'order-2',
-                    'z-10',
-                );
+                sliderEls[i].classList.remove('animate-slide-right', 'order-last', 'z-20');
+                sliderEls[i].classList.remove('animate-slide-left', 'order-first', 'z-10');
+                sliderEls[i].classList.remove('animate-slide-left2', 'order-2', 'z-10');
 
                 // Hide or show the slider
 
@@ -46,23 +35,11 @@ const Slider = () => {
             // Add animation
             list.forEach((item) => {
                 if (item === max) {
-                    sliderEls[item].classList.add(
-                        'animate-slide-right',
-                        'order-last',
-                        'z-20',
-                    );
+                    sliderEls[item].classList.add('animate-slide-right', 'order-last', 'z-20');
                 } else if (item === min) {
-                    sliderEls[item].classList.add(
-                        'animate-slide-left',
-                        'order-first',
-                        'z-10',
-                    );
+                    sliderEls[item].classList.add('animate-slide-left', 'order-first', 'z-10');
                 } else {
-                    sliderEls[item].classList.add(
-                        'animate-slide-left2',
-                        'order-2',
-                        'z-10',
-                    );
+                    sliderEls[item].classList.add('animate-slide-left2', 'order-2', 'z-10');
                 }
             });
 
@@ -78,6 +55,10 @@ const Slider = () => {
     const handleClickBanner = (item) => {
         if (item.type === 1) {
             dispatch(action.setCurSongId(item.encodeId));
+            dispatch(action.play(true));
+        } else if (item.type === 4) {
+            const albumPath = item.link.split('.')[0];
+            navigate(albumPath);
         }
     };
     return (

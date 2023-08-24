@@ -8,12 +8,16 @@ module.exports = {
                 'main-500': '#170f23',
                 'main-400': '#221a2d',
                 'main-300': '#393142',
+                'link-text-hover': '#c273ed',
+                'border-player': 'hsla(0,0%,100%,0.1)',
             },
             colors: {
                 'main-600': '#130c1c',
                 'main-500': '#170f23',
                 'main-400': '#221a2d',
                 'main-300': '#393142',
+                'link-text-hover': '#c273ed',
+                'border-player': 'hsla(0,0%,100%,0.1)',
             },
 
             keyframes: {
@@ -50,12 +54,12 @@ module.exports = {
                 },
             },
             animation: {
-                'slide-right':
-                    'slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
-                'slide-left':
-                    'slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
-                'slide-left2':
-                    'slide-left2 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
+                'slide-right': 'slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
+                'slide-left': 'slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
+                'slide-left2': 'slide-left2 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
+            },
+            flex: {
+                4: '4 4 0%',
             },
         },
     },

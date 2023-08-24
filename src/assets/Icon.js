@@ -1,13 +1,7 @@
-import { GoArrowLeft, GoArrowRight, GoSearch, GoHeart, GoHeartFill } from 'react-icons/go';
-import {
-    BiDotsHorizontalRounded,
-    BiSkipNext,
-    BiSkipPrevious,
-    BiPlayCircle,
-    BiPauseCircle,
-} from 'react-icons/bi';
+import { GoArrowLeft, GoArrowRight, GoSearch, GoHeart, GoHeartFill, GoPlay } from 'react-icons/go';
+import { BiDotsHorizontalRounded, BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { RxShuffle } from 'react-icons/rx';
-import { FiRepeat } from 'react-icons/fi';
+import { FiRepeat, FiPauseCircle, FiMusic } from 'react-icons/fi';
 
 export const icons = {
     GoArrowLeft,
@@ -15,13 +9,14 @@ export const icons = {
     GoSearch,
     GoHeart,
     GoHeartFill,
+    GoPlay,
     BiDotsHorizontalRounded,
     BiSkipNext,
     BiSkipPrevious,
-    BiPlayCircle,
-    BiPauseCircle,
     RxShuffle,
     FiRepeat,
+    FiPauseCircle,
+    FiMusic,
 };
 
 export const UserGroupIcon = ({ width = '24px', height = '24px', className }) => (
