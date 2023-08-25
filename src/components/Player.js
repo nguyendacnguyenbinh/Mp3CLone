@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import * as apis from '../apis';
 import { icons } from '../assets/Icon';
+import * as actions from '../store/action';
 
 const {
     GoHeartFill,
@@ -15,14 +16,12 @@ const {
     FiPauseCircle,
 } = icons;
 const Player = () => {
-    const audioEl = new Audio(
-        'https://mp3-s1-zmp3.zmdcdn.me/2342fbbac2f92ba772e8/5342545028580690751?authen=exp=1692866402~acl=/2342fbbac2f92ba772e8/*~hmac=dd6f60f2c5bfbc7a6271206473694710&fs=MTY5MjY5MzYwMjg3MHx3ZWJWNnwwfDExMy4xNjQdUngODAdUngMTYw',
-    );
+    const audioEl = useRef(new Audio());
+    const [isLike, setIsLike] = useState(false);
     const { currentSong, isPlaying } = useSelector((state) => state.music);
     const [songInfo, setSongInfo] = useState(null);
     const [source, setSource] = useState(null);
-
-    // const [isPlaying, setIsPlaying] = useState(false);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchDetailSong = async () => {
@@ -35,18 +34,34 @@ const Player = () => {
                 setSongInfo(res1.data.data);
             }
             if (res2.data.err === 0) {
-                setSource(res1.data.data['128']);
+                setSource(res2.data.data['128']);
             }
         };
         fetchDetailSong();
     }, [currentSong]);
 
+    console.log(isPlaying);
     useEffect(() => {
-        // audioEl.play();
-    }, []);
+        // audioEl.current.pause();
+        audioEl.current.src = source;
+        // audioEl.current.load();
+        if (isPlaying) {
+            audioEl.current.play();
+        }
+    }, [source, currentSong]);
 
     const hanldeTogglePlayMusic = () => {
-        // setIsPlaying((prev) => !prev);
+        if (isPlaying) {
+            audioEl.current.pause();
+            dispatch(actions.play(false));
+        } else {
+            audioEl.current.play();
+            dispatch(actions.play(true));
+        }
+    };
+
+    const handleToggleLike = () => {
+        setIsLike((prev) => !prev);
     };
 
     return (
@@ -62,8 +77,8 @@ const Player = () => {
                     <span className="text-[#ffffff80] text-[12px]">{songInfo?.artistsNames}</span>
                 </div>
                 <div className="text-white flex gap-4 justify-around pl-2">
-                    <span>
-                        <GoHeart size={16} />
+                    <span className="cursor-pointer" onClick={handleToggleLike}>
+                        {isLike === false ? <GoHeart size={16} /> : <GoHeartFill size={16} />}
                     </span>
                     <span>
                         <BiDotsHorizontalRounded size={16} />

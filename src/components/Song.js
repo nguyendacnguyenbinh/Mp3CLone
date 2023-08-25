@@ -1,13 +1,22 @@
 import React, { memo } from 'react';
 import { icons } from '../assets/Icon';
+import { useDispatch } from 'react-redux';
 import moment from 'moment';
+import * as actions from '../store/action';
 
 const { FiMusic } = icons;
 
 const Song = ({ songData }) => {
+    const dispatch = useDispatch();
     return (
         <div className="flex w-100% items-center justify-between text-left p-[10px] border-t border-[#ffffff0d] text-gray-500 text-xs hover:bg-bg-hover ">
-            <div className="flex flex-1 w-1/2 items-center gap-3 ">
+            <div
+                className="flex flex-1 w-1/2 items-center gap-3 "
+                onClick={() => {
+                    dispatch(actions.setCurSongId(songData?.encodeId));
+                    dispatch(actions.play(true));
+                }}
+            >
                 <span>
                     <FiMusic size={16} />
                 </span>
