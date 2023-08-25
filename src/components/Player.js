@@ -16,11 +16,11 @@ const {
     FiPauseCircle,
 } = icons;
 const Player = () => {
-    const audioEl = useRef(new Audio());
     const [isLike, setIsLike] = useState(false);
     const { currentSong, isPlaying } = useSelector((state) => state.music);
     const [songInfo, setSongInfo] = useState(null);
-    const [source, setSource] = useState(null);
+
+    const [audio, setAudio] = useState(new Audio());
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -34,7 +34,8 @@ const Player = () => {
                 setSongInfo(res1.data.data);
             }
             if (res2.data.err === 0) {
-                setSource(res2.data.data['128']);
+                audio.pause();
+                setAudio(new Audio(res2.data.data['128']));
             }
         };
         fetchDetailSong();
@@ -42,20 +43,18 @@ const Player = () => {
 
     console.log(isPlaying);
     useEffect(() => {
-        // audioEl.current.pause();
-        audioEl.current.src = source;
-        // audioEl.current.load();
+        audio.load();
         if (isPlaying) {
-            audioEl.current.play();
+            audio.play();
         }
-    }, [source, currentSong]);
+    }, [audio]);
 
     const hanldeTogglePlayMusic = () => {
         if (isPlaying) {
-            audioEl.current.pause();
+            audio.pause();
             dispatch(actions.play(false));
         } else {
-            audioEl.current.play();
+            audio.play();
             dispatch(actions.play(true));
         }
     };
@@ -85,7 +84,7 @@ const Player = () => {
                     </span>
                 </div>
             </div>
-            <div className="w-[40%]  flex flex-col justify-center items-center text-white ">
+            <div className="w-[40%]  flex flex-col justify-center items-center text-white gap-4">
                 <div className=" flex gap-8 justify-center items-center">
                     <span className="cursor-pointer" title="Bật phát ngẫu nhiên">
                         <RxShuffle size={18} />
@@ -106,7 +105,11 @@ const Player = () => {
                         <FiRepeat size={18} />
                     </span>
                 </div>
-                <div>Process bar</div>
+                <div className="w-full">
+                    <div className="w-3/4 h-[10px] m-auto relative bg-[hsla(0,0%,100%,0.3)] rounded-md">
+                        <div className="h-[3px] absolute top-0 left-0 right-0 bg-white  rounded-md"></div>
+                    </div>
+                </div>
             </div>
             <div className="w-[30%]">volume</div>
         </div>
